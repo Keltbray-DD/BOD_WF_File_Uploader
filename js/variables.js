@@ -1,15 +1,18 @@
-const projectID = "cc04c5f0-9a49-4195-96ea-8276a4fd1201";
-const namingstandardID ="cbddd21a-1d5d-52d1-80a5-2d1c21ef0197"
+const projectID = "d453081b-c796-4208-85a2-55fd332865d7";
+const namingstandardID ="4cb7c074-e0aa-5763-a173-ed550fb0da5d"
 const hubID= "b.24d2d632-e01b-4ca0-b988-385be827cb04"
 const bucketKey = "wip.dm.emea.2"
-const defaultFolder = "urn:adsk.wipemea:fs.folder:co.fVQbMv6BQUefajn7evnmSw" // KELTBRAY - WIP Folder
-const templateFolderID = "urn:adsk.wipemea:fs.folder:co.2bLO3HWeQmq5d_oMM7dVuA" // APPROVED_TEMPLATES Folder
-const toolURL ="https://keltbray-dd.github.io/Template_File_Uploader/"
+let  defaultFolder
+let  templateFolderID = "urn:adsk.wipemea:fs.folder:co.2bLO3HWeQmq5d_oMM7dVuA" // APPROVED_TEMPLATES Folder
+const toolURL ="https://keltbray-dd.github.io/BOD_WF_File_Uploader/"
 
+let ProjectFiles = []
+let projectFolders
+let deliverableFolders =[]
 
-const uploadfolders = [
-    {folderName:"KELTBRAY - WIP",folderID:"urn:adsk.wipemea:fs.folder:co.fVQbMv6BQUefajn7evnmSw"},
-    {folderName:"BBN - WIP",folderID:"urn:adsk.wipemea:fs.folder:co.NxjqFHVtRvaLgTpzPeFF2A"}
+let uploadfolders = [
+    //{folderName:"KELTBRAY - WIP",folderID:"urn:adsk.wipemea:fs.folder:co.fVQbMv6BQUefajn7evnmSw"},
+    //{folderName:"BBN - WIP",folderID:"urn:adsk.wipemea:fs.folder:co.NxjqFHVtRvaLgTpzPeFF2A"}
 ]
 
 const StatesList = [
@@ -26,13 +29,13 @@ const StatesList = [
     //{ code: 'S7', description: 'Suitable AIM Authorisation',folder:"NA" }
 ];
 
-const searchFolders =[
-    "urn:adsk.wipemea:fs.folder:co.fVQbMv6BQUefajn7evnmSw", // 0C.KELTBRAY - WIP
-"urn:adsk.wipemea:fs.folder:co.NxjqFHVtRvaLgTpzPeFF2A", // 0D.BBN - WIP
-"urn:adsk.wipemea:fs.folder:co.T1ockx3tRzCOfni80QuhzA", // 0E.SHARED
-"urn:adsk.wipemea:fs.folder:co.n8M-ILKySGeJWMKGO19FOg", // 0F.CLIENT_SHARED
-"urn:adsk.wipemea:fs.folder:co.dsMTe3uWRniqD2X0y4WEJw", // 0G.PUBLISHED
-"urn:adsk.wipemea:fs.folder:co.Q8t27AgsSiGqPr32Wjsmnw", // 0H.ARCHIVED
+let searchFolders =[
+    //"urn:adsk.wipemea:fs.folder:co.fVQbMv6BQUefajn7evnmSw", // 0C.KELTBRAY - WIP
+//"urn:adsk.wipemea:fs.folder:co.NxjqFHVtRvaLgTpzPeFF2A", // 0D.BBN - WIP
+//"urn:adsk.wipemea:fs.folder:co.T1ockx3tRzCOfni80QuhzA", // 0E.SHARED
+//"urn:adsk.wipemea:fs.folder:co.n8M-ILKySGeJWMKGO19FOg", // 0F.CLIENT_SHARED
+//"urn:adsk.wipemea:fs.folder:co.dsMTe3uWRniqD2X0y4WEJw", // 0G.PUBLISHED
+//"urn:adsk.wipemea:fs.folder:co.Q8t27AgsSiGqPr32Wjsmnw", // 0H.ARCHIVED
 ]
 const tooltips = [
     { value: "Project Pin", tooltip: "The ‘project pin’ identifier code indicates that a document is related to a specific project to control its placement and management within the project folder structure where more than one project identification number may be in use" },
